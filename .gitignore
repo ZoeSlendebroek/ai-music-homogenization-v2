@@ -1,0 +1,8 @@
+.env
+data/audio/
+data/human_corpus/
+data/features/
+data/prompts/
+__pycache__/
+*.pyc
+.DS_Store
