@@ -40,11 +40,16 @@ GENRES = {
     "metal": {
         "display":  "Heavy Metal",
         "target_n": 100,
-        "year_range": (2015, 2025),
+        "year_range": (2000, 2025),
         "spotify_playlists": [
-            "37i9dQZF1DWTcqUzwhNmKv",  # Heavy metal
-            "37i9dQZF1DX08jcQJXDnEQ",  # Metal classics
-            "37i9dQZF1DX9qNs32fujYe",  # Metal essentials
+            "1yMlpNGEpIVUIilZlrbdS0",
+            "27gN69ebwiJRtXEboL12Ih",
+            "50dc1OFb8lASN0AurBHKq0",
+            "2w16bIXfyPacvwOQaI8YvT",
+            "0jtl1YriX5cWmaIxu7mHss",
+            "7CDGxii3HkuZjIYPdAZfVj",
+            "7kveDCZaADORf7TtZqN0sC",
+
         ],
         "note": "Western niche genre. Maximally distinct MIR feature space from Afrobeats.",
     },

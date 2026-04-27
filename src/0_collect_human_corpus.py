@@ -188,15 +188,22 @@ def download_and_crop(url: str, out_path: Path) -> bool:
         return False
 
 
-# ── deduplication: one track per artist ──────────────────────────
+# ── deduplication: max 4 songs per artist, no duplicate titles ────
 def deduplicate_by_artist(tracks: list[dict]) -> list[dict]:
-    seen_artists = set()
+    artist_counts: dict[str, int] = {}
+    seen_songs: set[tuple[str, str]] = set()
     out = []
     for t in tracks:
         a = t["artist"].lower().strip()
-        if a not in seen_artists:
-            seen_artists.add(a)
-            out.append(t)
+        title = t["title"].lower().strip()
+        key = (a, title)
+        if key in seen_songs:
+            continue
+        if artist_counts.get(a, 0) >= 5:
+            continue
+        seen_songs.add(key)
+        artist_counts[a] = artist_counts.get(a, 0) + 1
+        out.append(t)
     return out
 
 

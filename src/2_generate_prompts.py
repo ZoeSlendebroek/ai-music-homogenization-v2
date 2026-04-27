@@ -87,25 +87,25 @@ INSTRUMENTATION = {
 # ── prompt renderers ──────────────────────────────────────────────
 
 def render_suno(genre_key: str, bpm: float, t_label: str, e_label: str,
-                r_label: str, hp: str, struct: str) -> str:
+                r_label: str, hp: str, struct: str, hr: float) -> str:
     genre_display = GENRES[genre_key]["display"]
     instr         = INSTRUMENTATION.get(genre_key, "acoustic and electronic instrumentation")
     return (
-        f"Instrumental {genre_display} at {bpm:.0f} BPM ({t_label}), "
+        f"Instrumental {genre_display} at {bpm:.1f} BPM ({t_label}), "
         f"{e_label}, {r_label}. "
-        f"{hp.capitalize()}. {struct.capitalize()}. "
+        f"{hp.capitalize()} (harmonic ratio {hr:.2f}). {struct.capitalize()}. "
         f"Instrumentation: {instr}. No vocals."
     )
 
 def render_lyria(genre_key: str, bpm: float, t_label: str, e_label: str,
-                 r_label: str, hp: str, struct: str, seed: int) -> str:
+                 r_label: str, hp: str, struct: str, seed: int, hr: float) -> str:
     genre_display = GENRES[genre_key]["display"]
     instr         = INSTRUMENTATION.get(genre_key, "acoustic and electronic instrumentation")
     prompt = (
         f"An instrumental {genre_display} track. "
         f"Mood: {e_label}. "
-        f"Tempo: {bpm:.0f} BPM, {t_label}. "
-        f"Rhythm: {r_label}, {hp}. "
+        f"Tempo: {bpm:.1f} BPM, {t_label}. "
+        f"Rhythm: {r_label}, {hp} (harmonic ratio {hr:.2f}). "
         f"Instrumentation: {instr}. "
         f"Structure: {struct}."
     )
@@ -113,13 +113,13 @@ def render_lyria(genre_key: str, bpm: float, t_label: str, e_label: str,
     return f'prompt: "{prompt}" | negative_prompt: "{negative}" | seed: {seed}'
 
 def render_udio(genre_key: str, bpm: float, t_label: str, e_label: str,
-                r_label: str, hp: str, struct: str) -> str:
+                r_label: str, hp: str, struct: str, hr: float) -> str:
     # Udio follows similar structure to Suno; trim to middle 30s post-download
     genre_display = GENRES[genre_key]["display"]
     instr         = INSTRUMENTATION.get(genre_key, "acoustic and electronic instrumentation")
     return (
-        f"Instrumental {genre_display}, {bpm:.0f} BPM ({t_label}), "
-        f"{e_label} energy. {r_label.capitalize()}, {hp}. "
+        f"Instrumental {genre_display}, {bpm:.1f} BPM ({t_label}), "
+        f"{e_label} energy. {r_label.capitalize()}, {hp} (harmonic ratio {hr:.2f}). "
         f"{struct.capitalize()}. "
         f"Instruments: {instr}. No vocals, no lyrics."
     )
@@ -186,9 +186,9 @@ def generate_prompts(genre_key: str):
             "structure_label":     s_lbl,
             "seed_lyria":          seed,
             # rendered prompts
-            "prompt_suno":  render_suno(genre_key,  bpm, t_lbl, e_lbl, r_lbl, hp, s_lbl),
-            "prompt_lyria": render_lyria(genre_key, bpm, t_lbl, e_lbl, r_lbl, hp, s_lbl, seed),
-            "prompt_udio":  render_udio(genre_key,  bpm, t_lbl, e_lbl, r_lbl, hp, s_lbl),
+            "prompt_suno":  render_suno(genre_key,  bpm, t_lbl, e_lbl, r_lbl, hp, s_lbl, hr),
+            "prompt_lyria": render_lyria(genre_key, bpm, t_lbl, e_lbl, r_lbl, hp, s_lbl, seed, hr),
+            "prompt_udio":  render_udio(genre_key,  bpm, t_lbl, e_lbl, r_lbl, hp, s_lbl, hr),
         })
 
     out_df  = pd.DataFrame(rows)
