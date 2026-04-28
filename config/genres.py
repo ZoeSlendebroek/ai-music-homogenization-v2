@@ -2,45 +2,51 @@
 # Central config for all genres: Spotify playlist seeds, corpus targets, prompt vocab.
 # Add new genres here only — scripts read from this file.
 
+
+
 GENRES = {
     "afrobeats": {
         "display":  "Afrobeats",
         "target_n": 100,
-        "year_range": (2015, 2025),
+        "year_range": (2010, 2026),
         # Spotify playlist IDs — instrumental/groove-heavy playlists preferred
         "spotify_playlists": [
-            "37i9dQZF1DX3LDIBRoaCDQ",  # Afrobeats
-            "37i9dQZF1DWYs9lGFdakKe",  # Afro hits
-            "37i9dQZF1DX0F1O4H5nHOA",  # Afrobeats Instrumentals (if available)
+            # LOOK FOR INSTRUMENTAL AFROBEATS!!!!!!!!!!
+            "2Fv4oN2mty17NfTTJarSOH",  # 168
+            "1dUGRxuSyKCHsI3dnXYcYc",  # 208
+            "1mHunEEIPUZwV6EfX1so5e",  # Afrobeats Instrumentals (if available)
+            "2GeWzrGeU8MfxCw6MyQPxn",
+            "0CRVC0hIRzwgeLLsITwRGs" # 113
         ],
         "note": "Legacy Suno v3 data retained. New Lyria/Udio data collected on current versions.",
     },
     "kpop": {
         "display":  "K-pop",
         "target_n": 100,
-        "year_range": (2018, 2025),
+        "year_range": (2010, 2026),
         "spotify_playlists": [
-            "37i9dQZF1DX9tPFwDMOaN1",  # K-pop hits
-            "37i9dQZF1DWU7yZzS8s0lX",  # K-pop rising
-            "37i9dQZF1DX4FcAKI5Nhzq",  # K-pop daebak
+            "37i9dQZF1DX9tPFwDMOaN1",  # K-pop ON! (from Spotify)
+            "37i9dQZF1EQpesGsmIyqcW",  # K-pop mix
+            "2EoheVFjqIxgJMb8VnDRtZ",  # KPOP Hits 2026
+            "3Ir5YWemOTGRRfXgROrsDV", # KPOP 2010-2026
         ],
         "note": "Large-scale non-Western comparator. High streaming volume.",
     },
     "dancepop": {
         "display":  "Dance Pop",
         "target_n": 100,
-        "year_range": (2018, 2025),
+        "year_range": (2010, 2026),
         "spotify_playlists": [
-            "37i9dQZF1DX4dyzvuaRJ0n",  # mint (dance pop)
-            "37i9dQZF1DX1g0iEXLFycr",  # Dance pop hits
-            "37i9dQZF1DXaXB8fQg7xof",  # Dance pop rising
+            "0NGrmRJhL59zivESZMrGFU",  # 57 songs Dancepop
+            "38fdzlWsgSywPEf9HaXMYu",  # 92 dancepop
+            "1Hu55P6Ah04dM5SRXNeEDI",  # ~500
         ],
         "note": "Western high-resource anchor. Grammy Best Dance Pop Recording category.",
     },
     "metal": {
         "display":  "Heavy Metal",
         "target_n": 100,
-        "year_range": (2000, 2025),
+        "year_range": (2000, 2026),
         "spotify_playlists": [
             "1yMlpNGEpIVUIilZlrbdS0",
             "27gN69ebwiJRtXEboL12Ih",

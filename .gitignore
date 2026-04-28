@@ -1,4 +1,5 @@
 .env
+.cache
 data/audio/
 data/human_corpus/
 data/features/

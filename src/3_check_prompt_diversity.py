@@ -65,7 +65,7 @@ def check_genre(genre_key: str):
         print(f"  [OK]   Below threshold ({PROMPT_DIVERSITY_THRESHOLD:.0%}).")
 
     # ── label distributions ───────────────────────────────────────
-    for col in ["tempo_label", "energy_label", "structure_label", "hp_label"]:
+    for col in ["tempo_label", "energy_label", "rhythm_label", "hp_label", "structure_label", "era_label"]:
         if col in df.columns:
             print(f"\n  {col}:")
             for val, cnt in df[col].value_counts().items():

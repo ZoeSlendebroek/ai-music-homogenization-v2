@@ -86,7 +86,7 @@ class FeatureExtractor:
 
     def _rhythmic(self, y, sr):
         tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
-        tempo    = float(tempo)
+        tempo    = float(np.asarray(tempo).flat[0])  # librosa 0.11 returns 1-d array; numpy 2.x requires scalar
         oe       = librosa.onset.onset_strength(y=y, sr=sr)
         of       = librosa.onset.onset_detect(onset_envelope=oe, sr=sr)
         if len(of) > 1:
