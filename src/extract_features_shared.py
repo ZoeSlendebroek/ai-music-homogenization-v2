@@ -48,6 +48,7 @@ class FeatureExtractor:
         f.update(self._harmonic(y, sr))
         f.update(self._structural(y, sr))
         f.update(self._dynamic(y, sr))
+        f.update(self._homogenization_extras(y, sr))
         f.update(self._mfcc(y, sr))
         return f
 
@@ -159,6 +160,45 @@ class FeatureExtractor:
         out["mfcc_delta2_mean"] = float(np.mean(d2))
         out["mfcc_delta2_std"]  = float(np.std(d2))
         return out
+
+    def _homogenization_extras(self, y, sr):
+        """
+        Five additional features added for homogenization analysis (Exp 2).
+        Not part of the original 67 and not used in prompt generation.
+
+        chroma_entropy     : Shannon entropy of the mean chroma vector (0–log2(12)≈3.58).
+                             Low = music is concentrated in a few pitch classes (strong key).
+                             High = music uses all 12 pitches roughly equally (atonal/chromatic).
+        key_clarity        : max(chroma) / mean(chroma). High = dominant pitch class present.
+        spectral_centroid_cv: std/mean of frame-level spectral centroid within the clip.
+                             Measures how much the timbral brightness changes over 30 s.
+        onset_strength_cv  : std/mean of onset strength envelope.
+                             Measures rhythmic energy variation (flat = metronomic/static).
+        rms_cv             : std/mean of RMS energy frames.
+                             Measures dynamic variation within the clip (flat = compressed).
+        """
+        ch      = librosa.feature.chroma_stft(y=y, sr=sr)
+        mean_ch = np.abs(np.mean(ch, axis=1))
+        p       = mean_ch / (mean_ch.sum() + 1e-10)
+        chroma_ent  = float(-np.sum(p * np.log2(p + 1e-10)))
+        key_clarity = float(float(np.max(p)) / (float(np.mean(p)) + 1e-10))
+
+        sc     = librosa.feature.spectral_centroid(y=y, sr=sr)[0]
+        sc_cv  = float(np.std(sc) / (np.mean(sc) + 1e-10))
+
+        oe     = librosa.onset.onset_strength(y=y, sr=sr)
+        oe_cv  = float(np.std(oe) / (np.mean(oe) + 1e-10))
+
+        rms    = librosa.feature.rms(y=y)[0]
+        rms_cv = float(np.std(rms) / (np.mean(rms) + 1e-10))
+
+        return {
+            "chroma_entropy":        chroma_ent,
+            "key_clarity":           key_clarity,
+            "spectral_centroid_cv":  sc_cv,
+            "onset_strength_cv":     oe_cv,
+            "rms_cv":                rms_cv,
+        }
 
 
 # The 67 acoustic feature column names — used for k-means and z-scoring.

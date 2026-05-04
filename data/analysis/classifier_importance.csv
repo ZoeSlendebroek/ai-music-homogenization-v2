@@ -1,0 +1,67 @@
+feature,importance,category
+mfcc_delta2_mean,0.14424725851136067,Timbral (MFCC)
+mfcc_0_mean,0.11689061163164581,Timbral (MFCC)
+ioi_mean,0.05148068935140845,Rhythmic
+ioi_std,0.0490380341500054,Rhythmic
+mfcc_delta_mean,0.04829819439601038,Timbral (MFCC)
+onset_density,0.04321643955306455,Prompt-encoded
+ioi_cv,0.02948931663388067,Rhythmic
+zero_crossing_rate_mean,0.024834641429933597,Spectral
+mfcc_2_mean,0.02358960527219359,Timbral (MFCC)
+onset_strength_cv,0.023538322607445348,Intra-track
+self_similarity_std,0.02167058806327746,Structural
+mfcc_0_std,0.018275290077548464,Timbral (MFCC)
+mfcc_5_mean,0.01804215265097893,Timbral (MFCC)
+spectral_contrast_mean,0.01651803710653669,Spectral
+spectral_centroid_mean,0.01586190422561682,Spectral
+spectral_flatness_std,0.012004791564323231,Spectral
+mfcc_3_mean,0.011179030565388158,Timbral (MFCC)
+spectral_bandwidth_mean,0.010316083004215769,Spectral
+mfcc_6_std,0.009848842163824565,Timbral (MFCC)
+spectral_rolloff_mean,0.009424025345206576,Spectral
+onset_strength_std,0.009236744804933588,Rhythmic
+mfcc_11_mean,0.008802557019668894,Timbral (MFCC)
+onset_strength_mean,0.008739629101182651,Rhythmic
+spectral_flatness_mean,0.008650485379299248,Spectral
+zero_crossing_rate_std,0.008598464058400493,Spectral
+harmonic_ratio,0.008425822076863003,Prompt-encoded
+self_similarity_mean,0.008334640896920159,Prompt-encoded
+mfcc_12_mean,0.008299118346066997,Timbral (MFCC)
+spectral_contrast_std,0.008175891980259788,Spectral
+chroma_cqt_mean,0.00813808118353714,Harmonic
+mfcc_4_mean,0.00812777171760457,Timbral (MFCC)
+repetition_score,0.008112952416775584,Structural
+rms_cv,0.008018372440201243,Intra-track
+mfcc_8_mean,0.007937869806298603,Timbral (MFCC)
+mfcc_delta2_std,0.007729834628424906,Timbral (MFCC)
+tonnetz_std,0.007587837126115352,Harmonic
+mfcc_9_std,0.007552783494529495,Timbral (MFCC)
+mfcc_delta_std,0.0075450382687258875,Timbral (MFCC)
+mfcc_6_mean,0.007451454231679706,Timbral (MFCC)
+spectral_bandwidth_std,0.00705078875092569,Spectral
+mfcc_10_mean,0.0069452682360475184,Timbral (MFCC)
+mfcc_5_std,0.006842058315745148,Timbral (MFCC)
+mfcc_3_std,0.006695628592681745,Timbral (MFCC)
+chroma_entropy,0.006568657157267615,Key / Tonal
+spectral_centroid_cv,0.006517014813131792,Intra-track
+chroma_stft_mean,0.006513018166437881,Harmonic
+mfcc_7_mean,0.006344687705672152,Timbral (MFCC)
+spectral_rolloff_std,0.006202050983712421,Spectral
+mfcc_10_std,0.0061526415562601945,Timbral (MFCC)
+key_clarity,0.006045528655107752,Key / Tonal
+spectral_centroid_var,0.005827321836438244,Spectral
+spectral_centroid_std,0.005733875619097414,Spectral
+mfcc_4_std,0.005705847594407393,Timbral (MFCC)
+mfcc_8_std,0.005410551466777813,Timbral (MFCC)
+mfcc_12_std,0.005336090773470688,Timbral (MFCC)
+mfcc_1_mean,0.005245534516367202,Timbral (MFCC)
+mfcc_2_std,0.005227971031858219,Timbral (MFCC)
+mfcc_7_std,0.004895325678178722,Timbral (MFCC)
+mfcc_1_std,0.004858594252066348,Timbral (MFCC)
+mfcc_9_mean,0.004099944675231582,Timbral (MFCC)
+tonnetz_mean,0.0040522386375563876,Harmonic
+chroma_stft_std,0.003986652354898907,Harmonic
+chroma_stft_var,0.003948270821207985,Harmonic
+chroma_cqt_std,0.003927072578253671,Harmonic
+mfcc_11_std,0.003901662054669111,Timbral (MFCC)
+tempo,0.0027364958951781684,Prompt-encoded
